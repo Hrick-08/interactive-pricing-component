@@ -14,7 +14,7 @@ const TIERS = [
 
 export function PricingCard() {
   const [tierIndex, setTierIndex] = useState(2) // default 100K
-  const [yearly, setYearly] = useState(false)
+  const [yearly, setYearly] = useState(false) // default to monthly billing
 
   const base = TIERS[tierIndex].price
   const monthlyPrice = yearly ? Math.round(base * 0.75 * 100) / 100 : base
@@ -109,9 +109,9 @@ export function PricingCard() {
 
         {/* Billing toggle */}
         <div className="sm:col-span-2">
-          <fieldset className="flex items-center justify-center gap-3 rounded-md bg-transparent px-2 py-1 text-sm sm:justify-end">
+          <fieldset className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-md bg-transparent px-2 py-1 text-sm sm:flex-nowrap sm:gap-4 sm:justify-end">
             <legend className="sr-only">Billing period</legend>
-            <label className="text-[hsl(225,20%,60%)] dark:text-muted-foreground">Monthly Billing</label>
+            <label className="min-w-[100px] text-center sm:text-right text-[hsl(225,20%,60%)] dark:text-muted-foreground">Monthly Billing</label>
             <button
               type="button"
               role="switch"
@@ -124,13 +124,13 @@ export function PricingCard() {
             >
               <span
                 className={cn(
-                  "absolute top-1/2 inline-block h-4 w-4 -translate-y-1/2 rounded-full bg-white transition-transform",
-                  yearly ? "translate-x-6" : "translate-x-1",
+                  "absolute top-1/2 left-0.5 inline-block h-5 w-5 -translate-y-1/2 rounded-full bg-white transition-transform",
+                  yearly ? "translate-x-5" : "translate-x-0",
                 )}
               />
               <span className="sr-only">{yearly ? "Yearly billing" : "Monthly billing"}</span>
             </button>
-            <label className="flex items-center gap-2 text-[hsl(225,20%,60%)] dark:text-muted-foreground">
+            <label className="flex min-w-[120px] items-center gap-2 text-[hsl(225,20%,60%)] dark:text-muted-foreground">
               Yearly Billing
               <span className="rounded-full bg-[hsl(14,92%,95%)] px-2 py-0.5 text-xs font-bold text-[hsl(15,100%,70%)] dark:bg-secondary">
                 {discountLabel}
