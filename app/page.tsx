@@ -10,7 +10,7 @@ export default function Page() {
           src="/images/bg-pattern.svg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[320px] w-full object-cover md:h-[380px]"
+          className="pointer-events-none absolute inset-0 top-0 -z-10 w-full h-full bg-no-repeat bg-top bg-contain dark:opacity-60"
         />
 
         {/* Header content */}
@@ -27,10 +27,10 @@ export default function Page() {
             <ThemeToggle />
           </div>
 
-          <h1 className="text-pretty text-2xl font-extrabold text-[hsl(227,35%,25%)] dark:text-foreground">
+          <h1 className="text-pretty text-2xl font-extrabold text-[hsl(227,35%,25%)]">
             Simple, traffic-based pricing
           </h1>
-          <p className="mt-2 text-pretty text-[15px] leading-6 text-[hsl(225,20%,60%)] dark:text-muted-foreground">
+          <p className="mt-2 text-pretty text-[15px] leading-6 text-[hsl(225,20%,60%)] dark:text-muted-foreground dark:fill-amber-50">
             Sign-up for our 30-day trial. No credit card required.
           </p>
         </header>

@@ -23,7 +23,7 @@ export function PricingCard() {
   const sliderPercent = useMemo(() => (tierIndex / (TIERS.length - 1)) * 100, [tierIndex])
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 dark:bg-card">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 dark:bg-card dark:shadow-white/20">
       {/* Top: pageviews + price */}
       <div className="grid items-center gap-4 p-6 sm:grid-cols-2 sm:gap-6 sm:p-8">
         <div className="text-center sm:text-left">
@@ -61,8 +61,19 @@ export function PricingCard() {
               "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[hsl(174,86%,45%)]",
             )}
             style={{
-              background: `linear-gradient(to right, hsl(174 77% 80%) 0%, hsl(174 77% 80%) ${sliderPercent}%, hsl(224 65% 95%) ${sliderPercent}%, hsl(224 65% 95%) 100%)`,
+              background: `linear-gradient(to right, 
+                ${yearly ? "hsl(174 77% 60%)" : "hsl(174 77% 80%)"} 0%, 
+                ${yearly ? "hsl(174 77% 60%)" : "hsl(174 77% 80%)"} ${sliderPercent}%, 
+                ${yearly ? "hsl(224 65% 15%)" : "hsl(224 65% 95%)"} ${sliderPercent}%, 
+                ${yearly ? "hsl(224 65% 15%)" : "hsl(224 65% 95%)"} 100%)`
             }}
+            className={cn(
+              "h-3 w-full appearance-none rounded-full",
+              "bg-[hsl(224,65%,95%)] dark:bg-muted",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[hsl(174,86%,45%)]",
+              "dark:before:bg-primary dark:after:bg-primary",
+              "[&[data-theme=dark]]:bg-gradient-to-r [&[data-theme=dark]]:from-primary [&[data-theme=dark]]:to-primary/20"
+            )}
           />
           {/* Custom thumb styling */}
           <style jsx>{`
